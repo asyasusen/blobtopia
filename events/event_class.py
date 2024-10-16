@@ -3,7 +3,6 @@
 import os
 
 
-
 class Event:
     def __init__(self, title= "Death of the the king", description="he died", choices=[]):
         self.title= title

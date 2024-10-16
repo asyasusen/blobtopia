@@ -13,11 +13,17 @@ class Consequence:
         # Update the field by adding the effect
         if self.text:
             print(self.text)
+        #USE EDIT_ IF THERE IS ONE
         if hasattr(self.effected_object, 'edit_'+self.field):
             func = getattr(self.effected_object, 'edit_'+self.field)
             func(self.effect)
         else:
-            current_value = getattr(self.effected_object, self.field)
+            #USE GET_ IF THERE IS ONE
+            if hasattr(self.effected_object, 'get_'+self.field):
+                func=  getattr(self.effected_object, 'get_'+self.field)
+                current_value= func()
+            else:
+                current_value = getattr(self.effected_object, self.field)
             if isinstance(current_value, int):
                 setattr(self.effected_object, self.field, current_value + self.effect)
             elif isinstance(current_value, str):

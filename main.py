@@ -1,10 +1,18 @@
+from blob.blob_generation.blob_creator import create_random_blob
 from events.choice_class import Choice
 from events.consequence_class import Consequence
 from events.event_class import Event
 from society import society_class
 from society.society_generation.create_random_society import create_random_society
-from story_events.time_pass_events.one_year_passes import one_year_passes
+from blob.relationship.relationship_manager import Relationship_Manager
+from time_manager.time_manager import Time_Manager
 
-
-soc=create_random_society()
-one_year_passes(soc)
+x= create_random_blob()
+y= create_random_blob()
+Relationship_Manager.blobs_meet(x,y)
+rel1 = Relationship_Manager.get_relationship(x,y)
+print(rel1.get_friend_score())
+Time_Manager.pass_days(30)
+print(rel1.get_friend_score())
+Time_Manager.pass_days(30)
+print(rel1.get_friend_score())
