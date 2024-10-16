@@ -1,0 +1,1 @@
+-each object, should have edit_{field} function if there is a trigger that might happen when changing the field. or else it will just change the field directly (check consequence class apply)
