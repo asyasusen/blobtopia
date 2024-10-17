@@ -4,7 +4,7 @@ class Society:
     def __init__(self, name="Society of blobs"):
         self.members=[]
         self.name=name
-        self.compassion=50
+        self.stats=[]
         
     def add_member(self,blob):
         self.members.append(blob)

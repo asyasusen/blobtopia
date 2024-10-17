@@ -3,6 +3,8 @@
 # natural_death_age+-natural_death_age_gap  will be the time blobs die
 import random
 
+from stats.stat_manager_class import Stat_Manager
+
 
 natural_death_age=80
 natural_death_age_gap=20
@@ -13,7 +15,7 @@ class Blob:
         self.name = name
         self.age = age
         self.alive= True
-        self.happiness=0
+        self.stats =[]
 
 
     def __str__(self):
