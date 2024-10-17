@@ -1,11 +1,14 @@
 # choice_class.py
 
 class Choice:
-    def __init__(self, text= "build him a graveyard", consequences=[] ):
+    def __init__(self, text= "build him a graveyard" ):
         self.text=text
-        self.consequences= consequences
-    def add_consequence(self, consequence):
-        self.consequences.append(consequence)
+        self.consequences=[]
+    def add_consequence(self, consequences): #can be array or item
+        if isinstance(consequences, list):
+            self.consequences.extend(consequences)
+        else:
+            self.consequences.append(consequences)
     def pick(self):
         self.print()
         for consequence in self.consequences:

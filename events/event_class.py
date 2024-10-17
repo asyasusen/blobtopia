@@ -4,10 +4,11 @@ import os
 
 
 class Event:
-    def __init__(self, title= "Death of the the king", description="he died", choices=[]):
+    def __init__(self, title= "Death of the the king", description="he died",wait_time=0):
         self.title= title
         self.description=description
-        self.choices = choices
+        self.choices = []
+        self.wait_time=wait_time
 
     def add_choice(self, choice):
         self.choices.append(choice)

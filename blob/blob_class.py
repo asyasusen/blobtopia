@@ -13,6 +13,7 @@ class Blob:
         self.name = name
         self.age = age
         self.alive= True
+        self.happiness=0
 
 
     def __str__(self):

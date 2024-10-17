@@ -1,4 +1,5 @@
 
+from relationship.relationship_modifier_class import Relationship_Modifier
 from time_manager.time_manager import Time_Manager
 
 
@@ -13,8 +14,8 @@ class Relationship:
         self.modifiers.remove(modifier)
     def get_friend_score(self):
         return self.calculate_score("friend")
-    def get_lover_score(self):
-        return self.calculate_score("lover")
+    def get_romance_score(self):
+        return self.calculate_score("romance")
     def calculate_score(self, type):
         score = 0
         time = Time_Manager.get_time()

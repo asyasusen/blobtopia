@@ -1,5 +1,6 @@
-from blob.relationship.relationship_class import Relationship
-from blob.relationship.relationship_modifier_class import Relationship_Modifier
+
+from relationship.relationship_class import Relationship
+from relationship.relationship_modifier_class import Relationship_Modifier
 
 
 class Relationship_Manager:
@@ -19,6 +20,15 @@ class Relationship_Manager:
             return reln
         else:
             return None
+        
+    @classmethod
+    def get_or_create_relationship(self, blob_feels, blob_towards):
+        reln= self.relationships.get((blob_feels, blob_towards))
+        if reln:
+            return reln
+        else:
+            reln= self.add_relationship(blob_feels=blob_feels, blob_towards=blob_towards)
+            return reln
 
     @classmethod
     def blobs_meet(self, blob1, blob2):
@@ -27,3 +37,4 @@ class Relationship_Manager:
         modifier = Relationship_Modifier("Just met",time_limit= 20, friend_score_modifier=10)
         reln1.add_modifier(modifier)
         reln2.add_modifier(modifier)
+        return reln1, reln2
