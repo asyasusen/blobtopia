@@ -62,7 +62,7 @@ def fall_in_love_event(x, y):
     keep_in.add_consequence(keep_in_consequences)
 
     # Define consequences for the "forget them" choice
-    forget_them.add_consequence(Consequence(effected_object=x, field="happiness", effect=10, text="With a new sense of clarity, {x.name} feels lighter as they decide to move on."))
+    forget_them.add_consequence(Consequence(effected_object=x, field="happiness", effect=10, text=f"With a new sense of clarity, {x.name} feels lighter as they decide to move on."))
 
     # Add events to the Event Manager
     Event_Manager.add_event(crush_event)

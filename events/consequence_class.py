@@ -3,6 +3,9 @@
 
 
 
+from stats.stat_modifier_class import Stat_Modifier
+
+
 class Consequence:
     def __init__(self, effected_object=None, field=None, effect=None, text=None, func=None, stat=None ):
         self.effected_object= effected_object
@@ -36,9 +39,15 @@ class Consequence:
                     setattr(self.effected_object, self.field, current_value)
                 elif current_value is None:
                     from stats.stat_manager_class import Stat_Manager
-                    Stat_Manager().add_modifier_to_stat_of_object(object=self.effected_object,
-                                                                  stat= self.field,
-                                                                  modifier=self.effect)
+                    if isinstance(self.effect, Stat_Modifier):
+                        Stat_Manager.add_modifier_to_stat_of_object(object=self.effected_object,
+                                                                  stat= self.field, modifier=self.effect)
+                    elif isinstance(self.effect, int):
+                        Stat_Manager.add_modifier_to_stat_of_object(object=self.effected_object,
+                                                                  stat= self.field, 
+                                                                  modifier=Stat_Modifier(reason=self.text, score_modifier=self.effect))
+                    else:
+                        raise ValueError("Stat modifier not given in proper format to consequence")
 
         
 
